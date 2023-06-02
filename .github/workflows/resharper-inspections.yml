@@ -1,0 +1,58 @@
+name: Resharper Code Inspections
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  resharper-inspections:
+    # Name the Job
+    name: Inspect C# via R# CLT
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+    env:
+      working-directory : ./
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Install the .NET SDK indicated in the global.json file
+      - name: Setup .NET 6
+        uses: actions/setup-dotnet@v3
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Building of the project is important step to resolve bin dependensies.
+      # See docs https://www.jetbrains.com/help/resharper/CleanupCode.html#9663f16d
+      - name: Build
+        run: dotnet build --verbosity normal
+
+      - name: Setup ReSharper Command Line Tools
+        run: dotnet tool install --global JetBrains.ReSharper.GlobalTools --version 2022.3
+
+      - name: Inspect code base
+        id: inspection
+        run: |
+          touch ./inspection_report.txt
+          jb inspectcode CombatDicesTeam.Graphs.sln --build --format=Text --output=./inspection_report.txt
+          echo " cyber-goblin-marker" >> ./inspection_report.txt
+          REPORT=$(cat "./inspection_report.txt")
+          echo $REPORT
+        working-directory: ${{env.working-directory}}
+        
+      - name: Find Comment of goblin
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: 1
+          body-includes: cyber-goblin-marker
+        
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message-id: ${{ steps.fc.outputs.comment-id }}
+          message-path: /home/runner/work/CombatDicesTeam.Graphs/CombatDicesTeam.Graphs/inspection_report.txt
