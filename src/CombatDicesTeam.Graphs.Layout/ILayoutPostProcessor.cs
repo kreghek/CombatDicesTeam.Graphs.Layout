@@ -1,4 +1,4 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization;
+﻿namespace CombatDicesTeam.Graphs.Layout;
 
 /// <summary>
 /// Node layout post-processor. Modify layouts after visualizing to gain additional effects.

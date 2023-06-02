@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace CombatDicesTeam.Graphs.Visualization;
+namespace CombatDicesTeam.Graphs.Layout;
 
 /// <summary>
 /// Visualizer to create node layouts.

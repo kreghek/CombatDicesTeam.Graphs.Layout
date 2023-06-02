@@ -1,4 +1,6 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization.Tests;
+﻿using CombatDicesTeam.Graphs.Layout.Tests.TestCases;
+
+namespace CombatDicesTeam.Graphs.Layout.Tests;
 
 public sealed class HorizontalGraphVisualizerAlignmentTests
 {
@@ -7,8 +9,8 @@ public sealed class HorizontalGraphVisualizerAlignmentTests
     /// </summary>
     [Test]
     [TestCaseSource(
-        typeof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases),
-        nameof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases.NodePerms2))]
+        typeof(HorizontalGraphVisualizerTestCases),
+        nameof(HorizontalGraphVisualizerTestCases.NodePerms2))]
     public void Create_TowWays_ReturnsChildrenLayoutsOppositeParents(int[] indexes)
     {
         // ARRANGE
@@ -72,8 +74,8 @@ public sealed class HorizontalGraphVisualizerAlignmentTests
     /// </summary>
     [Test]
     [TestCaseSource(
-        typeof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases),
-        nameof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases.NodePermsIsolated))]
+        typeof(HorizontalGraphVisualizerTestCases),
+        nameof(HorizontalGraphVisualizerTestCases.NodePermsIsolated))]
     public void Create_TowWaysAndIsolatedRoot_ReturnsChildrenLayoutsOppositeParents(int[] indexes)
     {
         // ARRANGE
@@ -142,8 +144,8 @@ public sealed class HorizontalGraphVisualizerAlignmentTests
     /// </summary>
     [Test]
     [TestCaseSource(
-        typeof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases),
-        nameof(HorizontalGraphVisualizerTestCases.HorizontalGraphVisualizerTestCases.NodePermsIsolated))]
+        typeof(HorizontalGraphVisualizerTestCases),
+        nameof(HorizontalGraphVisualizerTestCases.NodePermsIsolated))]
     public void Create_ZigZag_ReturnsChildrenLayoutsOppositeParents(int[] indexes)
     {
         // ARRANGE

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace CombatDicesTeam.Graphs.Visualization.Tests.HorizontalGraphVisualizerTestCases;
+namespace CombatDicesTeam.Graphs.Layout.Tests.TestCases;
 
 public static class HorizontalGraphVisualizerTestCases
 {

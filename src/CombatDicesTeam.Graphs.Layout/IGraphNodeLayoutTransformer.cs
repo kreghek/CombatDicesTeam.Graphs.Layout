@@ -1,4 +1,4 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization;
+﻿namespace CombatDicesTeam.Graphs.Layout;
 
 /// <summary>
 /// Transformer of node layout.

@@ -1,4 +1,4 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization.Tests;
+﻿namespace CombatDicesTeam.Graphs.Layout.Tests;
 
 public class RepeatPostProcessorTests
 {
@@ -7,7 +7,7 @@ public class RepeatPostProcessorTests
     {
         var baseProcessorMock = new Mock<ILayoutPostProcessor<object>>();
         baseProcessorMock.Setup(x => x.Process(It.IsAny<IReadOnlyCollection<IGraphNodeLayout<object>>>()))
-            .Returns(new []
+            .Returns(new[]
             {
                 Mock.Of<IGraphNodeLayout<object>>()
             });
@@ -18,11 +18,11 @@ public class RepeatPostProcessorTests
         {
             Mock.Of<IGraphNodeLayout<object>>()
         };
-        
+
         // ACT
 
         processor.Process(sourceLayouts);
-        
+
         // ASSERT
 
         baseProcessorMock.Verify(x => x.Process(It.IsAny<IReadOnlyCollection<IGraphNodeLayout<object>>>()),

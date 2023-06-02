@@ -1,4 +1,4 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization.Tests;
+﻿namespace CombatDicesTeam.Graphs.Layout.Tests;
 
 public sealed class HorizontalGraphVisualizerSizeTests
 {
@@ -157,6 +157,6 @@ public sealed class HorizontalGraphVisualizerSizeTests
         layouts.Should().Satisfy(
             layout => (layout.Node.Payload == 0 || layout.Node.Payload == 1) && layout.Position.X == 0,
             layout => (layout.Node.Payload == 0 || layout.Node.Payload == 1) && layout.Position.X == 0,
-            layout => (layout.Node.Payload == 2) && layout.Position.X == NODE_SIZE && layout.Position.Y == MIDDLE);
+            layout => layout.Node.Payload == 2 && layout.Position.X == NODE_SIZE && layout.Position.Y == MIDDLE);
     }
 }

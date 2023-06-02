@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace CombatDicesTeam.Graphs.Visualization;
+namespace CombatDicesTeam.Graphs.Layout;
 
 [PublicAPI]
 public sealed class HorizontalGraphVisualizer<TValueData> : IGraphNodeVisualizer<TValueData>

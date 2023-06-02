@@ -1,4 +1,4 @@
-﻿namespace CombatDicesTeam.Graphs.Visualization;
+﻿namespace CombatDicesTeam.Graphs.Layout;
 
 /// <summary>
 /// Validator of node layout.

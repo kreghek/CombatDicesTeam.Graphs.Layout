@@ -1,4 +1,4 @@
-namespace CombatDicesTeam.Graphs.Visualization.Tests;
+namespace CombatDicesTeam.Graphs.Layout.Tests;
 
 public sealed class HorizontalGraphVisualizerTests
 {
@@ -116,7 +116,7 @@ public sealed class HorizontalGraphVisualizerTests
         layouts.Should().Satisfy(
             layout => (layout.Node.Payload == 0 || layout.Node.Payload == 1) && layout.Position.X == 0,
             layout => (layout.Node.Payload == 0 || layout.Node.Payload == 1) && layout.Position.X == 0,
-            layout => (layout.Node.Payload == 2) && layout.Position.X == 1);
+            layout => layout.Node.Payload == 2 && layout.Position.X == 1);
     }
 
     /// <summary>
@@ -217,9 +217,9 @@ public sealed class HorizontalGraphVisualizerTests
         positions.Should().BeEquivalentTo(expectedPositions);
     }
 
-    private static Graph<object> CreateLineGraph(int lineCount)
+    private static IGraph<object> CreateLineGraph(int lineCount)
     {
-        var graph = new Graph<object>();
+        var graph = new DirectedGraph<object>();
 
         GraphNode<object>? prevNode = null;
 

@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace CombatDicesTeam.Graphs.Visualization;
+namespace CombatDicesTeam.Graphs.Layout;
 
 /// <summary>
 /// Post-processor which retry transformation if modified layout is not valid.
