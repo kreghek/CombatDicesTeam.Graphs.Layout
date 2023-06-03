@@ -2,6 +2,9 @@
 
 public class RepeatPostProcessorTests
 {
+    /// <summary>
+    /// Test checks the inner processor used multiple times.
+    /// </summary>
     [Test]
     public void Process_MultipleIterations_BaseProcessorsCalledMultipleTimes()
     {
@@ -12,7 +15,8 @@ public class RepeatPostProcessorTests
                 Mock.Of<IGraphNodeLayout<object>>()
             });
 
-        var processor = new RepeatPostProcessor<object>(2, baseProcessorMock.Object);
+        const int REPEAT_COUNT = 2;
+        var processor = new RepeatPostProcessor<object>(REPEAT_COUNT, baseProcessorMock.Object);
 
         var sourceLayouts = new[]
         {
@@ -26,6 +30,6 @@ public class RepeatPostProcessorTests
         // ASSERT
 
         baseProcessorMock.Verify(x => x.Process(It.IsAny<IReadOnlyCollection<IGraphNodeLayout<object>>>()),
-            Times.Exactly(2));
+            Times.Exactly(REPEAT_COUNT));
     }
 }

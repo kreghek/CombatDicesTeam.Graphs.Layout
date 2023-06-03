@@ -19,8 +19,6 @@ public sealed class PushHorizontallyPostProcessor<TNodePayload> : ILayoutPostPro
 
         for (var i = 1; i < modified.Length; i++)
         {
-            var currentDistance = modified[i].Position.X - modified[i - 1].Position.X + modified[i - 1].Size.Width;
-
             for (var j = i; j < modified.Length; j++)
             {
                 var layout = modified[j];

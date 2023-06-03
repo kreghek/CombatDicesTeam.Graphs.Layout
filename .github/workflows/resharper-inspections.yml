@@ -39,7 +39,7 @@ jobs:
         id: inspection
         run: |
           touch ./inspection_report.txt
-          jb inspectcode CombatDicesTeam.Graphs.sln --build --format=Text --output=./inspection_report.txt
+          jb inspectcode CombatDicesTeam.Graphs.Layout.sln --build --format=Text --output=./inspection_report.txt
           echo " cyber-goblin-marker" >> ./inspection_report.txt
           REPORT=$(cat "./inspection_report.txt")
           echo $REPORT
@@ -55,4 +55,4 @@ jobs:
       - uses: mshick/add-pr-comment@v2
         with:
           message-id: ${{ steps.fc.outputs.comment-id }}
-          message-path: /home/runner/work/CombatDicesTeam.Graphs/CombatDicesTeam.Graphs/inspection_report.txt
+          message-path: /home/runner/work/CombatDicesTeam.Graphs.Layout/CombatDicesTeam.Graphs.Layout/inspection_report.txt

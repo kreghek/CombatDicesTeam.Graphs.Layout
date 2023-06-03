@@ -2,8 +2,11 @@
 
 public class RotatePostProcessorTests
 {
+    /// <summary>
+    /// Test checks the processor rotates whole graph on 90 degress (pi/2) from top to down.
+    /// </summary>
     [Test]
-    public void Process_MultipleIterations_BaseProcessorsCalledMultipleTimes()
+    public void Process_90Degrees_GraphBecomeOrientedVerically()
     {
         // ARRANGE
 
@@ -24,8 +27,11 @@ public class RotatePostProcessorTests
         layouts.First().Position.Y.Should().Be(1);
     }
 
+    /// <summary>
+    /// Test checks the processor rotates a left-right graph to right-left orientation.
+    /// </summary>
     [Test]
-    public void Process_MultipleIterations_BaseProcessorsCalledMultipleTimes2()
+    public void Process_180Degress_GraphBecomeMirrored()
     {
         // ARRANGE
 
@@ -46,8 +52,11 @@ public class RotatePostProcessorTests
         layouts.First().Position.Y.Should().Be(0);
     }
 
+    /// <summary>
+    /// Test checks the processor rotates whole graph on 90 degress (pi/2) from top-right square of coordinate system to bottom-right square.
+    /// </summary>
     [Test]
-    public void Process_MultipleIterations_BaseProcessorsCalledMultipleTimes3()
+    public void Process_DiagonalPositionOfNodeInTopRightSquareAnd90Degrees_NodeChangePositionToRightBottom()
     {
         // ARRANGE
 
