@@ -1,5 +1,9 @@
 # CombatDicesTeam.Graphs.Layout
 
+[![CodeFactor](https://www.codefactor.io/repository/github/kreghek/combatdicesteam.graphs.layout/badge)](https://www.codefactor.io/repository/github/kreghek/combatdicesteam.graphs.layout)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/93de79ed27d9455fb7785c38d180d142)](https://app.codacy.com/gh/kreghek/CombatDicesTeam.Graphs.Layout/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/df5218ca651f07ca09ce/maintainability)](https://codeclimate.com/github/kreghek/CombatDicesTeam.Graphs.Layout/maintainability)
+
 The simplest lightweight library to layout graphs to the plane.
 
 ## Usage
