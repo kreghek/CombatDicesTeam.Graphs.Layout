@@ -25,7 +25,8 @@ public class RetryTransformLayoutPostProcessorTests
         });
 
         const int ATTEMPT_COUNT = 2;
-        var processor = new RetryTransformLayoutPostProcessor<object>(transformerMock.Object, validatorMock.Object, ATTEMPT_COUNT);
+        var processor =
+            new RetryTransformLayoutPostProcessor<object>(transformerMock.Object, validatorMock.Object, ATTEMPT_COUNT);
 
         var sourceLayouts = new[]
         {
