@@ -23,7 +23,7 @@
 
     <PropertyGroup>
         <Authors>Pavel Kurkutov</Authors>
-        <Description>Lightweight library to visualize graphs.</Description>
+        <Description>The simplest lightweight library to layout graphs to the plane. The library was made for the indie game devs, so as not to pull monstrous enterprise solutions for working with graphs into small pet-games.</Description>
 
         <!-- PackageProjectUrl is different from the repository URL. It can be a documentation
              website or a website explaining the project -->

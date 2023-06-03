@@ -1,6 +1,6 @@
 # CombatDicesTeam.Graphs.Layout
 
-The simplest library to layout graphs to the plane.
+The simplest lightweight library to layout graphs to the plane.
 
 ## Usage
 

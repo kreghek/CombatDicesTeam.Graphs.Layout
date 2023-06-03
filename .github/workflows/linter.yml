@@ -37,7 +37,7 @@ jobs:
         run: dotnet build --verbosity normal
 
       - name: Clean up codebase via ReSharper Command Line Tools
-        run: jb cleanupcode --profile="Full Cleanup" CombatDicesTeam.Graphs.sln
+        run: jb cleanupcode --profile="Full Cleanup" CombatDicesTeam.Layout.sln
         working-directory: ${{env.working-directory}}
 
       - name: Commit changes
