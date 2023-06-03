@@ -2,8 +2,11 @@
 
 public class PushHorizontallyPostProcessorTests
 {
+    /// <summary>
+    /// Test checks the next node pushed from previous node on specified distance.
+    /// </summary>
     [Test]
-    public void Process_MultipleIterations_BaseProcessorsCalledMultipleTimes()
+    public void Process_TwoLayoutsOneNextToAnother_IncreaseDistanceBetweenNodesBySpecifiedAmount()
     {
         // ARRANGE
 

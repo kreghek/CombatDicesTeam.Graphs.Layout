@@ -2,6 +2,9 @@
 
 public class RetryTransformLayoutPostProcessorTests
 {
+    /// <summary>
+    /// Test checks the post-processor retry transformation every time a validation failed.
+    /// </summary>
     [Test]
     public void Process_FirstAttemptIsInvalid_CallTransformation2Times()
     {
