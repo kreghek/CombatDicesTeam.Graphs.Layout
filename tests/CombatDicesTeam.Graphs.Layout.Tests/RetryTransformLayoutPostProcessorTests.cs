@@ -11,16 +11,18 @@ public class RetryTransformLayoutPostProcessorTests
         transformerMock.Setup(x => x.Get(It.IsAny<IGraphNodeLayout<object>>()))
             .Returns(Mock.Of<IGraphNodeLayout<object>>());
 
-        var attemptIndex = 0;
+        var attemptNumber = 0;
         var validatorMock = new Mock<IGraphNodeLayoutValidator<object>>();
         validatorMock.Setup(x => x.Validate(It.IsAny<IGraphNodeLayout<object>>(),
             It.IsAny<IReadOnlyCollection<IGraphNodeLayout<object>>>())).Returns(() =>
         {
-            attemptIndex++;
-            return attemptIndex - 1 == 0;
+            attemptNumber++;
+            // Pass validation only for last retry.
+            return attemptNumber - 1 == 0;
         });
 
-        var processor = new RetryTransformLayoutPostProcessor<object>(transformerMock.Object, validatorMock.Object, 2);
+        const int ATTEMPT_COUNT = 2;
+        var processor = new RetryTransformLayoutPostProcessor<object>(transformerMock.Object, validatorMock.Object, ATTEMPT_COUNT);
 
         var sourceLayouts = new[]
         {
@@ -29,10 +31,11 @@ public class RetryTransformLayoutPostProcessorTests
 
         // ACT
 
-        var layouts = processor.Process(sourceLayouts);
+        processor.Process(sourceLayouts);
 
         // ASSERT
 
-        transformerMock.Verify(x => x.Get(It.IsAny<IGraphNodeLayout<object>>()), Times.Exactly(1));
+        const int EXPECTED_RETRY_COUNT = ATTEMPT_COUNT - 1;
+        transformerMock.Verify(x => x.Get(It.IsAny<IGraphNodeLayout<object>>()), Times.Exactly(EXPECTED_RETRY_COUNT));
     }
 }
