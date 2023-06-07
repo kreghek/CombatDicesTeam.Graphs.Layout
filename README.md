@@ -10,12 +10,17 @@ The simplest lightweight library to layout graphs to the plane.
 
 ```c#
 
+// 0. Create the graph.
+
+var graph = new DirectedGraph<int>();
+// TODO: Fill graph with nodes.
+
 // 1. Create graph layouts. Layout is container of graph node with coordinates.
 // HorizontalGraphVisualizer try to place every node in line.
 // ConcreteLayoutConfig is your implementation of ILayoutConfig (see example below).
 
 var visualizer = new HorizontalGraphVisualizer<int>();  // work with graph of integers.
-var layouts = visualizer.Create(campaignGraph, new ConcreteLayoutConfig());
+var layouts = visualizer.Create(graph, new ConcreteLayoutConfig());
 
 // 2. Optionally pass the graph layouts through the pipeline of a post-processors.
 
