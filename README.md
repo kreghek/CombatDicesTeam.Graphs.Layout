@@ -20,7 +20,8 @@ var graph = new DirectedGraph<int>();
 // ConcreteLayoutConfig is your implementation of ILayoutConfig (see example below).
 
 var visualizer = new HorizontalGraphVisualizer<int>();  // work with graph of integers.
-var layouts = visualizer.Create(graph, new ConcreteLayoutConfig());
+var config = new ConcreteLayoutConfig();
+var layouts = visualizer.Create(graph, config);
 
 // 2. Optionally pass the graph layouts through the pipeline of a post-processors.
 
@@ -29,7 +30,7 @@ var random = new Random();
 var postProcessors = new ILayoutPostProcessor<int>[]
 {
     // Increase distance between every node in line.
-    new PushHorizontallyPostProcessor<int>(16),
+    new PushHorizontallyPostProcessor<int>(config.NodeSize / 2),
 	// Rotate whole graph on specified angle in radians.
     new RotatePostProcessor<int>(random.NextDouble() * Math.PI),
 	// Repeat list of transformations multiple times.
@@ -37,7 +38,7 @@ var postProcessors = new ILayoutPostProcessor<int>[]
 	    // Try to perform specified transformation if it failed by validation.
 		// RandomPositionLayoutTransformer is you own implementation of IGraphNodeLayoutTransformer<>.
 		// IntersectsGraphNodeLayoutValidator<> checks a layouts do not intersects.
-        new RetryTransformLayoutPostProcessor<int>(new RandomPositionLayoutTransformer(random),
+        new RetryTransformLayoutPostProcessor<int>(new RandomPositionLayoutTransformer(random, config.NodeSize / 2),
             new IntersectsGraphNodeLayoutValidator<int>(), 10))
 };
 
@@ -62,7 +63,10 @@ Example of visualizer config:
 ```c#
 private sealed class ConcreteLayoutConfig : ILayoutConfig
 {
-    public int NodeSize => LAYOUT_NODE_SIZE * 2 + CONTENT_MARGIN * 2;
+    private const int LAYOUT_NODE_SIZE = 32;
+    private const int CONTENT_MARGIN = 5;
+    
+    public int NodeSize => LAYOUT_NODE_SIZE + CONTENT_MARGIN * 2;
 }
 ```
 
@@ -71,18 +75,20 @@ Example of custom layout transformer:
 ```c#
 private sealed class RandomPositionLayoutTransformer : IGraphNodeLayoutTransformer<int>
 {
+    private readonly int _offsetDistance;
     private readonly Random _random;
 
-    public RandomPositionLayoutTransformer(Random random)
+    public RandomPositionLayoutTransformer(Random random, int offsetDistance)
     {
         _random = random;
+	_offsetDistance = offsetDistance;
     }
 
     /// <inheritdoc />
     public IGraphNodeLayout<int> Get(IGraphNodeLayout<int> layout)
     {
 	    // Calculate new random position of layout.
-        var offset = new Position(_random.Next(-20, 20), _random.Next(-20, 20));
+        var offset = new Position(_random.Next(-_offsetDistance, _offsetDistance), _random.Next(-_offsetDistance, _offsetDistance));
         var position = new Position(layout.Position.X + offset.X, layout.Position.Y + offset.Y);
 
         // And create new layout.
